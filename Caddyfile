@@ -1,0 +1,9 @@
+
+hellozach.co
+{
+root /opt/www
+tls zackn9ne@gmail.com
+log /var/log/caddyaccess.log
+errors /var/log/caddyerror.log
+fastcgi / /var/run/php5-fpm.sock php
+}
