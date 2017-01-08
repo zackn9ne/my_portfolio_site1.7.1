@@ -25,7 +25,7 @@ $mail->Port = 587;
 $mail->SMTPDebug = 1;
 // use
 $mail->Host = gethostbyname('smtp.gmail.com');
-$mail->Username = "zackn9ne@gmail.com";
+$mail->Username = $acn;
 $mail->Password = "+4sWF2qQy.qX)V";
 //Set who the message is to be sent from
 $mail->setFrom($acn, 'First Last');
