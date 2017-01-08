@@ -1,29 +1,19 @@
 <?php
 
 
-function debug_to_console( $data ) {
 
-    if ( is_array( $data ) )
-        $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-    else
-        $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
-    echo $output;
-}
-
-
+var_dump($_POST);
+echo "asdf";
 
 //$email = $_REQUEST['email'] ;
 //$message = $_REQUEST['message'] ;
 
 //get secrets outta here
 $inifile = parse_ini_file("my.ini");
-    var_dump($inifile);
+ //   var_dump($inifile);
 $acn = $inifile["Account"];
 $pwd = $inifile["Pass"];
 
-
-//debug_to_console ($inifile);
 
 
 
@@ -66,25 +56,16 @@ require 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 //Tell PHPMailer to use SMTP
-$mail->isSMTP();
-//Enable SMTP debugging
-// 0 = off (for production use)
-// 1 = client messages
-// 2 = client and server messages
-$mail->SMTPDebug = 2;
-//Ask for HTML-friendly debug output
-$mail->Debugoutput = 'html';
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    $mail->SMTPDebug = 3;
 //Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
-// use
-// $mail->Host = gethostbyname('smtp.gmail.com');
-// if your network does not support SMTP over IPv6
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-$mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-$mail->SMTPSecure = 'tls';
-//Whether to use SMTP authentication
-$mail->SMTPAuth = true;
+    $mail->Host = 'smtp.gmail.com';
+
+
+
+
 //Username to use for SMTP authentication - use full email address for gmail
 $mail->Username = $acn;
 //Password to use for SMTP authentication

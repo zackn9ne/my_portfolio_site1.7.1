@@ -509,7 +509,8 @@ jQuery(document).ready(function(){
                 url: "phpmailer.php",
                 data: dataString,
                 complete: function () {
-		    console.log(dataString);
+                    console.log("ajax was hit");
+                    console.log(dataString);
                     $('.success').fadeIn(1000).delay(3000).fadeOut(1000);
                     $('#contact')[0].reset();
                 }
